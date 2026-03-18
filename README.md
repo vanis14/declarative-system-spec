@@ -18,7 +18,7 @@ Think Terraform, but for software systems. The human declares desired state. The
 
 - **[SPEC.md](SPEC.md)** — The full document standard. Covers when to write a spec, how to structure it, writing principles, guidance for both human authors and consuming agents, anti-patterns, and a template.
 
-- **[examples/](examples/)** — Worked examples of Declarative System Specs built using this standard. *(coming soon)*
+- **[examples/](examples/)** — Worked examples of Declarative System Specs built using this standard.
 
 ## Quick Start
 
