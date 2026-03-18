@@ -45,4 +45,4 @@ MIT
 
 ## Contributing
 
-Issues and pull requests welcome. If you've used this standard on a project and have feedback on what worked or didn't, I'd genuinely like to hear it.
+Feedbacks are welcomed. If you've used this standard on a project and have feedback on what worked or didn't, I'd genuinely like to hear it.
