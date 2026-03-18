@@ -35,9 +35,9 @@ Think Terraform, but for software systems. The human declares desired state. The
 
 ## Origin
 
-This standard was derived from building [Spark](https://github.com/vanislim), a cognitive partnership system, and from designing production AWS infrastructure — both built primarily through AI agent sessions. The standard emerged from solving the practical problem of maintaining architectural coherence across hundreds of agent sessions over months.
+This standard was derived from building Spark, a cognitive partnership system, and from designing production AWS infrastructure — both built primarily through AI agent sessions. The standard emerged from solving the practical problem of maintaining architectural coherence across hundreds of agent sessions over months.
 
-Blog post with full context: [vanislim.com](https://blog.vanislim.com) *(link to introduction post)*
+Blog post with full context: [https://blog.vanislim.com/declare-dont-instruct/](https://blog.vanislim.com/declare-dont-instruct/)
 
 ## License
 
