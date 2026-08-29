@@ -2,7 +2,7 @@
 
 > A document format for defining software systems in a way that both humans and AI agents can consume without prior context, enabling agentic engineering workflows where agents derive implementation from declarations.
 
-**Version:** 1.1  
+**Version:** 1.2  
 **What this document is:** The definition of a document type. After reading this, you will understand what a Declarative System Spec is, why it exists, when to create one, how to write one, and how to implement from one.
 
 **Who this is for:** Any human or AI agent who needs to either write a Declarative System Spec for a new project, or implement a system from an existing one.
@@ -274,6 +274,37 @@ Assume the reader has zero prior context. Every term is defined. Every relations
 
 This is the core difference from internal documentation (which assumes shared context) and a Declarative System Spec (which assumes none).
 
+### 4.8 Mark the Provenance of Every Claim
+
+Every normative statement should record where it came from: the human, or the agent.
+
+Specs are written collaboratively, and agents write most of the words. In doing so an agent inevitably fills gaps — it picks a default, invents a threshold, adds a restriction nobody asked for. Written down without attribution, that invention is indistinguishable from a requirement. The next session reads it as a constraint the human imposed, honours it, and builds on it. Constraints accumulate that no one ever chose.
+
+The failure mode is **constraint laundering** — a model's guess enters the spec as prose, and every subsequent reading promotes it to a requirement. It is the inverse of staleness (Section 6.4): not the spec falling behind reality, but the spec inventing a reality of its own.
+
+Tag every normative statement with its origin:
+
+```
+[H]   Stated explicitly by the human.
+[H✓]  Proposed by an agent, then explicitly approved by the human.
+[M]   Model-derived. A default, a guess, or a convention nobody asked for.
+```
+
+```
+Untagged: "Sandbox VMs MUST be destroyed within 24 hours."
+Tagged:   "[M] Sandbox VMs MUST be destroyed within 24 hours."
+```
+
+The first is a requirement forever. The second is a default any session may change.
+
+A spec using these tags MUST state their authority once, near the top:
+
+> `[M]` items carry no authority. They are the model's own defaults, not constraints the human
+> imposed. Any session may challenge, change, or delete an `[M]` item without asking. Never cite
+> an `[M]` item as a reason something cannot be done.
+
+**Why this matters more for agents than for humans:** a human author remembers which lines were their own idea. An agent reading cold has no such memory — provenance survives only if it was written down. Untagged prose defaults to maximum authority, which is exactly backwards for the parts the model made up.
+
 ---
 
 ## 5. How Agents Should Consume This Document
@@ -473,6 +504,7 @@ Things that degrade a Declarative System Spec's effectiveness:
 | Monolithic behaviors | One section describing everything the system does | Separate by component responsibility and rate of change |
 | No acceptance criteria | The spec describes what to build but not how to verify it works | Always include testable conditions |
 | Stale spec | Implementation diverged and the spec wasn't updated | Update spec first, then implementation. Never the reverse. |
+| Unattributed model invention | An agent's guess is written as plain prose; later sessions honour it as a human requirement | Tag every normative statement `[H]`, `[H✓]` or `[M]` (Section 4.8) |
 
 ---
 
@@ -497,6 +529,7 @@ The Declarative System Spec sits upstream of all implementation artifacts. It is
 |---|---|---|
 | 1.0 | 2026-02 | Initial release — core standard established |
 | 1.1 | 2026-03 | Added Section 6.4: The Implementation Feedback Loop — addressing spec staleness during implementation based on production usage |
+| 1.2 | 2026-08 | Added Section 4.8: Mark the Provenance of Every Claim — preventing model-invented constraints from being read as human requirements by later sessions |
 
 ---
 
